@@ -35,8 +35,8 @@ function startCountdown() {
             totalSeconds--;
             updateTimerDisplay();
             
-            // Nếu còn ít hơn 10 giây, thêm hiệu ứng cảnh báo
-            if (totalSeconds < 10) {
+            // Nếu còn ít hơn 30 giây, thêm hiệu ứng cảnh báo
+            if (totalSeconds < 30) {
                 document.getElementById("seconds").classList.add("warning");
             }
         } else {
@@ -93,18 +93,31 @@ function resetCountdown() {
 
 // ================= CHỌN NGẪU NHIÊN Ô MÀU =====================
 
-// Xác định IDs của các ô màu trong từng khu vực (dựa vào mũi tên trong ảnh)
-const leftZoneIDs = [
-  "blue1", "blue3", "blue5", 
-  "red1", "red3", "red5", 
-  "green1", "green3", "green5"
+// Xác định các cặp ID đối xứng nhau giữa hai bên (dựa vào mũi tên trong ảnh)
+const symmetricPairs = [
+  // Cặp 1
+  { left: "blue1", right: "blue2" },
+  // Cặp 2
+  { left: "blue3", right: "blue4" },
+  // Cặp 3
+  { left: "blue5", right: "blue6" },
+  // Cặp 4
+  { left: "red1", right: "red2" },
+  // Cặp 5
+  { left: "red3", right: "red4" },
+  // Cặp 6
+  { left: "red5", right: "red6" },
+  // Cặp 7
+  { left: "green1", right: "green2" },
+  // Cặp 8
+  { left: "green3", right: "green4" },
+  // Cặp 9
+  { left: "green5", right: "green6" }
 ];
 
-const rightZoneIDs = [
-  "blue2", "blue4", "blue6", 
-  "red2", "red4", "red6", 
-  "green2", "green4", "green6"
-];
+// Vị trí các ô trong mỗi khối (để đảm bảo mỗi khối có đủ 3 màu)
+const leftZoneIDs = symmetricPairs.map(pair => pair.left);
+const rightZoneIDs = symmetricPairs.map(pair => pair.right);
 
 // Hàm trộn mảng (Fisher-Yates shuffle)
 function shuffle(array) {
@@ -115,27 +128,28 @@ function shuffle(array) {
   return array;
 }
 
-// Hàm random mới chia thành hai khu vực
+// Hàm random mới đảm bảo tính đối xứng
 function random() {
-  // Tạo pool màu cho mỗi khu vực (3 màu mỗi loại)
+  // Tạo pool màu (3 màu mỗi loại)
   const colorPool = [...Array(3).fill("blue"), ...Array(3).fill("red"), ...Array(3).fill("green")];
   
   // Trộn ngẫu nhiên các màu
-  const leftColors = shuffle([...colorPool]);
-  const rightColors = shuffle([...colorPool]);
+  const shuffledColors = shuffle([...colorPool]);
   
-  // Áp dụng các màu vào từng khu vực
-  leftZoneIDs.forEach((id, index) => {
-    const box = document.getElementById(id);
-    if (box) {
-      box.src = `./image/${leftColors[index]}.jpg`;
+  // Áp dụng các màu đối xứng vào cả hai bên
+  symmetricPairs.forEach((pair, index) => {
+    const color = shuffledColors[index];
+    
+    // Áp dụng màu cho bên trái
+    const leftBox = document.getElementById(pair.left);
+    if (leftBox) {
+      leftBox.src = `./image/${color}.jpg`;
     }
-  });
-  
-  rightZoneIDs.forEach((id, index) => {
-    const box = document.getElementById(id);
-    if (box) {
-      box.src = `./image/${rightColors[index]}.jpg`;
+    
+    // Áp dụng cùng màu cho bên phải ở vị trí đối xứng
+    const rightBox = document.getElementById(pair.right);
+    if (rightBox) {
+      rightBox.src = `./image/${color}.jpg`;
     }
   });
 }
