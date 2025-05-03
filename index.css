@@ -185,31 +185,31 @@ body {
 /* Các ô màu */
 .color-box {
     position: absolute;
-    width: 23px; /* Giảm kích thước ô màu */
-    height: 23px; /* Giảm kích thước ô màu */
+    width: 25px; /* Giảm kích thước ô màu */
+    height: 25px; /* Giảm kích thước ô màu */
     pointer-events: auto;
     border-radius: 50%; /* Thay đổi thành hình tròn */
     cursor: pointer; /* Hiển thị con trỏ chuột khi di chuyển vào */
 }
 
 /* Vị trí ô màu: căn theo % trên bản đồ (điều chỉnh cho phù hợp với kích thước mới) */
-#blue1 { top: 54.4%; left: 27.8%; }
-#blue2 { top: 54.4%; left: 67.7%; }
+#blue1 { top: 54.4%; left: 27.6%; }
+#blue2 { top: 54.4%; left: 67.5%; }
 #blue3 { top: 66.6%; left: 20.3%; }
 #blue4 { top: 66.6%; left: 75%; }
-#blue5 { top: 82.8%; left: 43.8%; }
-#blue6 { top: 82.8%; left: 51.6%; }
+#blue5 { top: 82.6%; left: 43.8%; }
+#blue6 { top: 82.6%; left: 51.6%; }
 
-#red1  { top: 57%; left: 32%; }
-#red2  { top: 57%; left: 63.4%; }
-#red3  { top: 76.7%; left: 20.3%; }
-#red4  { top: 76.7%; left: 75.2%; }
-#red5  { top: 72.7%; left: 43.8%; }
-#red6  { top: 72.7%; left: 51.7%; }
+#red1  { top: 56.8%; left: 32%; }
+#red2  { top: 56.8%; left: 63.4%; }
+#red3  { top: 76.7%; left: 20%; }
+#red4  { top: 76.7%; left: 74.8%; }
+#red5  { top: 72.7%; left: 43.4%; }
+#red6  { top: 72.7%; left: 51.2%; }
 
-#green1 { top: 54.4%; left: 36.3%; }
-#green2 { top: 54.4%; left: 59.1%; }
-#green3 { top: 71.5%; left: 25%; }
+#green1 { top: 54.2%; left: 36.3%; }
+#green2 { top: 54.2%; left: 59.1%; }
+#green3 { top: 71.2%; left: 24.6%; }
 #green4 { top: 71.5%; left: 70%; }
 #green5 { top: 77.4%; left: 38.8%; }
 #green6 { top: 77.4%; left: 56.4%; }
