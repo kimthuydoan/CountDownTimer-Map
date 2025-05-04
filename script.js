@@ -158,6 +158,69 @@ function random() {
   });
 }
 
+// ================= CHỌN THEO CẶP (RANDOM PAIR) =================
+
+function randomPair() {
+  console.log("randomPair function called"); // Debugging
+  
+  // Define the left side IDs
+  const leftSideIds = {
+    blue: ["blue1", "blue3", "blue5"],   // Blue balls on left side
+    red: ["red1", "red3", "red5"],       // Red balls on top
+    green: ["green1", "green3", "green5"] // Green balls on right
+  };
+  
+  // Define the right side IDs (symmetric to left side)
+  const rightSideIds = {
+    blue: ["blue2", "blue4", "blue6"],    // Blue balls on right side
+    red: ["red2", "red4", "red6"],        // Red balls on top
+    green: ["green2", "green4", "green6"]  // Green balls on left
+  };
+
+  // Set all left side balls
+  leftSideIds.blue.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = "./image/blue.jpg"; // Blue balls on left side
+    }
+  });
+  
+  leftSideIds.red.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = "./image/red.jpg"; // Red balls on top
+    }
+  });
+  
+  leftSideIds.green.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = "./image/green.jpg"; // Green balls on right
+    }
+  });
+  
+  // Set all right side balls (mirror symmetry)
+  rightSideIds.blue.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = "./image/blue.jpg"; // Blue balls on right side
+    }
+  });
+  
+  rightSideIds.red.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = "./image/red.jpg"; // Red balls on top
+    }
+  });
+  
+  rightSideIds.green.forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = "./image/green.jpg"; // Green balls on left
+    }
+  });
+}
 
 // ===================== CHỤP MÀN HÌNH BẢN ĐỒ ===================
 
