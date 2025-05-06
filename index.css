@@ -1,5 +1,3 @@
-/* index.css */
-
 /* Basic reset and font */
 * {
     margin: 0;
@@ -11,24 +9,24 @@
 body {
     background: linear-gradient(135deg, #eaaae7, #1f8fb1);
     color: white;
-    min-height: 100vh; /* Đảm bảo body luôn chiếm ít nhất toàn bộ chiều cao viewport */
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
-    align-items: center; /* Căn giữa theo chiều ngang */
-    justify-content: flex-start; /* Bắt đầu từ phía trên */
-    margin: 0; /* Loại bỏ margin mặc định của body */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
 }
 
 /* Header chứa đồng hồ đếm giờ */
 .countdown-header {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
-    border-radius: 0 0 20px 20px; /* Bo góc dưới */
+    border-radius: 0 0 20px 20px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.3);
     backdrop-filter: blur(10px);
     width: 100%;
     text-align: center;
-    margin-bottom: 20px; /* Tạo khoảng cách với phần bản đồ */
+    margin-bottom: 20px;
 }
 
 .countdown-header .container {
@@ -77,7 +75,7 @@ body {
 }
 
 .countdown-header .time-display {
-    display: none; /* Ẩn mặc định */
+    display: none;
     justify-content: center;
     gap: 15px;
     margin-top: 10px;
@@ -123,7 +121,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1; /* Đảm bảo phần này chiếm không gian còn lại */
+    flex-grow: 1;
 }
 
 .map-section .container {
@@ -134,30 +132,30 @@ body {
     backdrop-filter: blur(10px);
     width: 90%;
     max-width: 900px;
-    min-height: calc(100vh - 101px); /* Điều chỉnh giá trị này nếu cần */
+    min-height: calc(100vh - 101px);
 }
 
 /* Vị trí container chính của bản đồ */
-.map:not(.select){
+.map:not(.select) {
     display: none;
 }
 
-.map{
+.map {
     padding: 0;
-    margin: 20px auto; /* Căn giữa bản đồ và thêm margin trên dưới */
+    margin: 20px auto;
     position: relative;
-    max-width: 100%; /* Đảm bảo bản đồ không vượt quá container */
+    max-width: 100%;
 }
 
 .map * {
     user-select: none;
-    -webkit-user-drag: none; /*Ngăn kéo thả phần tử và nd bên trong*/
+    -webkit-user-drag: none;
 }
+
 .map.select {
     position: relative;
     width: 100%;
-    height: 100%; /* Thử thêm dòng này */
-    /* aspect-ratio: 1.6; */
+    height: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -179,49 +177,49 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Không chặn tương tác với bản đồ */
+    pointer-events: none;
 }
 
 /* Các ô màu */
 .color-box {
     position: absolute;
-    width: 25px; /* Giảm kích thước ô màu */
-    height: 25px; /* Giảm kích thước ô màu */
+    width: 32px;
+    height: 32px;
     pointer-events: auto;
-    border-radius: 50%; /* Thay đổi thành hình tròn */
-    cursor: pointer; /* Hiển thị con trỏ chuột khi di chuyển vào */
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-/* Vị trí ô màu: căn theo % trên bản đồ (điều chỉnh cho phù hợp với kích thước mới) */
-#blue1 { top: 54.4%; left: 27.6%; }
-#blue2 { top: 54.4%; left: 67.5%; }
-#blue3 { top: 66.6%; left: 20.3%; }
-#blue4 { top: 66.6%; left: 75%; }
-#blue5 { top: 82.6%; left: 43.8%; }
-#blue6 { top: 82.6%; left: 51.6%; }
+/* Vị trí ô màu */
+#blue1 { top: 5%; left: 27.2%; }
+#blue2 { top: 5%; left: 69.7%; }
+#blue3 { top: 32.5%; left: 20.1%; }
+#blue4 { top: 32.5%; left: 77%; }
+#blue5 { top: 66%; left: 44.6%; }
+#blue6 { top: 66%; left: 52%; }
 
-#red1  { top: 56.8%; left: 32%; }
-#red2  { top: 56.8%; left: 63.4%; }
-#red3  { top: 76.7%; left: 20%; }
-#red4  { top: 76.7%; left: 74.8%; }
-#red5  { top: 72.7%; left: 43.4%; }
-#red6  { top: 72.7%; left: 51.2%; }
+#red1 { top: 15%; left: 32.2%; }
+#red2 { top: 15.2%; left: 64.5%; }
+#red3 { top: 43%; left: 25%; }
+#red4 { top: 43%; left: 71.8%; }
+#red5 { top: 45%; left: 44.5%; }
+#red6 { top: 45%; left: 52%; }
 
-#green1 { top: 54.2%; left: 36.3%; }
-#green2 { top: 54.2%; left: 59.1%; }
-#green3 { top: 71.2%; left: 24.6%; }
-#green4 { top: 71.5%; left: 70%; }
-#green5 { top: 77.4%; left: 38.8%; }
-#green6 { top: 77.4%; left: 56.4%; }
+#green1 { top: 5%; left: 37.2%; }
+#green2 { top: 5%; left: 59.4%; }
+#green3 { top: 53%; left: 20%; }
+#green4 { top: 53%; left: 77%; }
+#green5 { top: 55.5%; left: 39.6%; }
+#green6 { top: 55.5%; left: 57%; }
 
-.map-section button{
+.map-section button {
     margin: 5px;
     padding: 10px 15px;
     font-size: 12px;
     font-weight: bold;
     border-radius: 8px;
     border: none;
-    background-color: #007bff; /* Màu xanh dương bootstrap */
+    background-color: #007bff;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
