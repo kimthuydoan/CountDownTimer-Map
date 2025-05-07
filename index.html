@@ -9,30 +9,7 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header class="countdown-header">
-        <div class="container">
-            <h1>Thời gian còn lại</h1>
-            <div class="time-container">
-                <div class="time-inputs" id="time-inputs">
-                    <input type="number" id="hours-input" min="0" max="99" value="0"> :
-                    <input type="number" id="minutes-input" min="0" max="59" value="12"> :
-                    <input type="number" id="seconds-input" min="0" max="59" value="0">
-                </div>
-                <div class="time-display" id="time-display" style="display: none;">
-                    <div class="box"><span id="hours">00</span><p>Giờ</p></div>
-                    <div class="box"><span id="minutes">00</span><p>Phút</p></div>
-                    <div class="box"><span id="seconds">00</span><p>Giây</p></div>
-                </div>
-            </div>
-            <div>
-                <button onclick="startCountdown()">Bắt đầu</button>
-                <button onclick="pauseCountdown()">Tạm dừng</button>
-                <button onclick="resetCountdown()">Reset</button>
-            </div>
-            <audio id="beep-audio" src="clock-ticking-sound-effect_tAETVYt.mp3" preload="auto"></audio>
-        </div>
-    </header>
-
+   
     <main class="map-section">
         <div class="container">
             <div class="row justify-content-center align-items-center">
