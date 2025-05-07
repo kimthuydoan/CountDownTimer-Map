@@ -160,9 +160,9 @@ function randomPair() {
       right: ["blue1", "green3", "red5"]
     },
     rightChild: {
-      left: ["blue2", "green4", "red6"],
+      left: ["green2", "blue4", "blue6"],
       top: ["red2", "red4", "green6"],
-      right: ["green2", "blue4", "blue6"]
+      right: ["blue2", "green4", "red6"]
     }
   };
 
