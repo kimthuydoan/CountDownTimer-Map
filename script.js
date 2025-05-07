@@ -152,224 +152,72 @@ function random() {
   });
 }
 // ================= CHỌN THEO CẶP (GENERATE LAYOUT) =================
-function generateLayout() {
-  const regions1 = {
-    top: ["blue1", "blue2", "blue3","blue4","blue5","blue6"],
-    left: ["green1", "green2", "green3", "green4", "green5", "green6"],
-    right: ["blue4", "blue6", "red2", "red4", "red6", "green4", "green6"]
-  };
-
-  const regions2 = {
-    top: ["blue1", "blue2", "blue3","blue4","blue5","blue6"],
-    right: ["green1", "green2", "green3", "green4", "green5", "green6"],
-    left: ["blue4", "blue6", "red2", "red4", "red6", "green4", "green6"]
-  };
-
-  const regions3 = {
-    left: ["blue1", "blue2", "blue3","blue4","blue5","blue6"],
-    green: ["green1", "green2", "green3", "green4", "green5", "green6"],
-    right: ["blue4", "blue6", "red2", "red4", "red6", "green4", "green6"]
-  };
-
-  const regions4 = {
-    top: ["blue1", "blue2", "blue3","blue4","blue5","blue6"],
-    right: ["green1", "green2", "green3", "green4", "green5", "green6"],
-    left: ["blue4", "blue6", "red2", "red4", "red6", "green4", "green6"]
-  };
-
-  Object.values(regions1,regions2,regions3).flat().forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) {
-      console.error(`Element ${id} not found in DOM!`);
-    } else {
-      console.log(`Element ${id} found`);
+function randomPair() {
+  const regions = {
+    leftChild: {
+      left: ["green1", "blue3", "blue5"],
+      top: ["red1", "red3", "green5"],
+      right: ["blue1", "green3", "red5"]
+    },
+    rightChild: {
+      left: ["blue2", "green4", "red6"],
+      top: ["red2", "red4", "green6"],
+      right: ["green2", "blue4", "blue6"]
     }
-  });
+  };
 
-  const caseNumber = Math.floor(Math.random() * 6) + 1;
-  console.log("Selected case:", caseNumber);
+  
+  const areaMapping = {
+    LEFT: [...regions.leftChild.left, ...regions.rightChild.left], 
+    TOP: [...regions.leftChild.top, ...regions.rightChild.top],    
+    RIGHT: [...regions.leftChild.right, ...regions.rightChild.right] 
+  };
 
-  Object.values(regions).flat().forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
+  
+  Object.values(areaMapping)
+    .flat()
+    .forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) {
+        console.error(`Phần tử có ID ${id} không được tìm thấy trong DOM!`);
+        return;
+      }
       el.src = "";
       el.style.display = "none";
-      el.style.visibility = "hidden";
-      console.log(`Reset ${id}`);
-    }
+    });
+
+ 
+  const caseNumber = Math.floor(Math.random() * 6) + 1;
+  console.log(`Trường hợp được chọn: ${caseNumber}`);
+
+  
+  const cases = {
+    1: { LEFT: "blue", TOP: "red", RIGHT: "green" },
+    2: { LEFT: "blue", RIGHT: "red", TOP: "green" },
+    3: { TOP: "blue", LEFT: "red", RIGHT: "green" },
+    4: { TOP: "blue", RIGHT: "red", LEFT: "green" },
+    5: { RIGHT: "blue", LEFT: "red", TOP: "green" },
+    6: { RIGHT: "blue", TOP: "red", LEFT: "green" }
+  };
+
+
+  const selectedCase = cases[caseNumber];
+
+
+  Object.entries(selectedCase).forEach(([area, color]) => {
+    const ids = areaMapping[area];
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) {
+        console.error(`Phần tử có ID ${id} không được tìm thấy trong quá trình gán!`);
+        return;
+      }
+      el.src = `./image/${color}.jpg`;
+      el.style.display = "block";
+      console.log(`Đã gán màu ${color} cho ${id}, src: ${el.src}`);
+    });
   });
-
-  if (caseNumber === 1) {
-    regions.top.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/green.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned green to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.left.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/blue.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned blue to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.right.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/red.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned red to ${id}, src: ${el.src}`);
-      }
-    });
-  } else if (caseNumber === 2) {
-    regions.top.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/red.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned red to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.left.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/blue.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned blue to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.right.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/green.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned green to ${id}, src: ${el.src}`);
-      }
-    });
-  } else if (caseNumber === 3) {
-    regions.top.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/green.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned green to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.left.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/red.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned red to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.right.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/blue.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned blue to ${id}, src: ${el.src}`);
-      }
-    });
-  } else if (caseNumber === 4) {
-    regions.top.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/blue.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned blue to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.left.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/red.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned red to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.right.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/green.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned green to ${id}, src: ${el.src}`);
-      }
-    });
-  } else if (caseNumber === 5) {
-    regions.top.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/red.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned red to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.left.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/green.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned green to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.right.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/blue.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned blue to ${id}, src: ${el.src}`);
-      }
-    });
-  } else if (caseNumber === 6) {
-    regions.top.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/blue.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned blue to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.left.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/green.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned green to ${id}, src: ${el.src}`);
-      }
-    });
-    regions.right.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.src = `./image/red.jpg`;
-        el.style.display = "block";
-        el.style.visibility = "visible";
-        console.log(`Assigned red to ${id}, src: ${el.src}`);
-      }
-    });
-  }
 }
-
 // ===================== CHỤP MÀN HÌNH BẢN ĐỒ ===================
 function screenshot() {
   const mapElement = document.querySelector(".map.select");
